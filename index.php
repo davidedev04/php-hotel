@@ -7,9 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Document</title>
-</head>
 
-<body>
     <?php
 
     $hotels = [
@@ -52,20 +50,39 @@
 
     ];
 
-    foreach ($hotels as $hotel) {
-
-        echo '<div class="border text-center">'
-            . '<h3>'
-            . $hotel['name'] . " - "
-            . $hotel['description'] . " - " . "<br>"
-            . "stelle: " . $hotel['vote'] . " - "
-            . "km dal centro: " . $hotel['distance_to_center']
-            . '</h3>'
-            . '</div>';
-
-    }
-
     ?>
+
+</head>
+
+<body>
+
+    <table border="1" style="width: 50%;">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Parking</th>
+            <th>Vote</th>
+            <th>Distance to center</th>
+        </tr>
+
+
+        <?php
+        foreach ($hotels as $hotel) {
+
+            echo "<tr>";
+            echo "<td>$hotel[name]</td>";
+            echo "<td>$hotel[description]</td>";
+            echo "<td>"
+            . ($hotel['parking'] ? 'YES' : 'NO') .
+            "</td>";
+            echo "<td>$hotel[vote]</td>";
+            echo "<td>$hotel[distance_to_center] km</td>";
+            echo "</tr>";
+
+        }
+
+        ?>
+    </table>
 </body>
 
 </html>
